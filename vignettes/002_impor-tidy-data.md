@@ -36,7 +36,7 @@ Paket hanya perlu dipasang satu kali melalui fungsi `install.packages("nama_pake
 
 
 ```r
-evals <- read_csv("D:/project-r-academy/intro/data-raw/evals.csv")
+evals <- read_csv("../data-raw/evals.csv")
 ```
 
 ```
@@ -173,7 +173,7 @@ skim(evals)
 ##  n obs: 463 
 ##  n variables: 21 
 ## 
-## -- Variable type:character -----------------------------------------------------------------------
+## -- Variable type:character ------------------------------------------------------------------------
 ##     variable missing complete   n min max empty n_unique
 ##  cls_credits       0      463 463  10  12     0        2
 ##    cls_level       0      463 463   5   5     0        2
@@ -185,7 +185,7 @@ skim(evals)
 ##   pic_outfit       0      463 463   6  10     0        2
 ##         rank       0      463 463   7  12     0        3
 ## 
-## -- Variable type:numeric -------------------------------------------------------------------------
+## -- Variable type:numeric --------------------------------------------------------------------------
 ##       variable missing complete   n  mean    sd    p0   p25   p50   p75
 ##            age       0      463 463 48.37  9.8  29    42    48    57   
 ##        bty_avg       0      463 463  4.42  1.53  1.67  3.17  4.33  5.5 
@@ -218,7 +218,7 @@ Umumnya berkas `csv` menggunakan penanda koma (,) untuk memisahkan antar kolom d
 
 
 ```r
-evals2 <- read_csv2("D:/project-r-academy/intro/data-raw/evals2.csv")
+evals2 <- read_csv2("../data-raw/evals2.csv")
 ```
 
 ```
