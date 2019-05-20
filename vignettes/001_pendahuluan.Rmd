@@ -131,3 +131,4 @@ Dari catatan ringkas mengenai fungsi-fungsi di atas, dapatkah Anda menebak mana 
 3. dsb
 
 Sekarang Anda dipersilakan untuk menekan tombol **Knit** (Ctrl + Shift + K) untuk menghasilkan dokumen html dari dokumen R Markdown ini. 
+
