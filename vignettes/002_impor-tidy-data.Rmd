@@ -32,7 +32,7 @@ library(readr)
 Paket hanya perlu dipasang satu kali melalui fungsi `install.packages("nama_paket")` dan harus selalu diaktifkan setiap menggawali kerja menggunakan R agar fungsi-fungsi yang tersedia dalam paket tersebut dapat digunakan. Sebagai contoh, kita akan menggunakan fungsi `read_csv()` dari paket `readr` untuk mengimpor data 'evals.csv' dari folder 'data-raw' sebagai berikut:
 
 ```{r}
-evals <- read_csv("D:/project-r-academy/intro/data-raw/evals.csv")
+evals <- read_csv("../data-raw/evals.csv")
 evals
 ```
 
@@ -53,7 +53,7 @@ skim(evals)
 Umumnya berkas `csv` menggunakan penanda koma (,) untuk memisahkan antar kolom dan titik (.) sebagai penanda desimal. Namun bagaimana jika Anda memiliki berkas `csv` yang yang menggunakan titik-koma (;) untuk memisahkan kolom dan koma (,) sebagai penanda desimal? Sebagai contoh, pada direktori `data-raw` terdapar berkas `evals2` yang memiliki kriteria tersebut. Anda dapat menggunakan fungsi `read_csv2` untuk mengimpor berkas tersebut sebagaimana ditunjukan pada contoh berikut:
 
 ```{r}
-evals2 <- read_csv2("D:/project-r-academy/intro/data-raw/evals2.csv")
+evals2 <- read_csv2("../data-raw/evals2.csv")
 identical(evals, evals2) # fungsi untuk cek kesamaan antara dua obyek
 ```
 
