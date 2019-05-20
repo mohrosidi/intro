@@ -33,10 +33,12 @@ head(mtcars) # melihat 6 baris pertama dari data mtcars, mtcars adalah data bawa
 
 Jika ingin menjalankan kode R dalam *chunck* tersebut, Anda dapat menggunakan pemintas Ctrl + Enter (menjalankan satu baris kode) atau Ctrl + Shift + Enter (menjalankan semua kode dalam *chunck*). Sekarang buatlah *chunck* baru yang isinya adalah baris kode R berikut: (Petunjuk: Gunakan Ctrl + Alt + I)
 
+```{r}
 filled.contour(volcano,
                color.palette = terrain.colors, 
                plot.title = title("Topografi Gunung Maunga Whau"), 
                key.title = title("Tinggi\n(meter)"))
+```
 
 Setelah selesai membuat dokumen R Markdown yang berisikan konten tulisan beserta kode R, Anda dapat klik tombol **Knit** untuk menghasilkan dokumen baru sesuai dengan format dokumen yang diinginkan. Dalam contoh ini format dokumen keluaran R Markdown setelah menjalankan **Knit** adalah dokumen HTML. Anda dapat mengatur format dokumen keluaran dengan cara mengubah baris *output* pada YAML metadata (lihat baris paling atas dokumen ini) seperti contoh berikut:
 
@@ -83,17 +85,17 @@ Fungsi memiliki tugas utama untuk mengolah suatu *input* menjadi *output*. Anda 
 ```{r}
 iris # mencetak data di konsol
 dim(iris) # cek dimensi objek
-str(iris) # cek struktur objek
-colnames(iris) # cek nama kolom
-head(iris) # cek 6 observasi pertama
-head(iris, 10) # cek 10 observasi pertama
-tail(iris) # cek 6 observasi terakhir
-tail(iris, 10) # cek 10 observasi terakhir
+str(iris) # cek struktur internal objek (tipe data, dimesi, dan ringkasan nilai pada masing-masing variabel)
+colnames(iris) # cetak nama kolom iris
+head(iris) # cetak 6 observasi pertama
+head(iris, 10) # cetak 10 observasi pertama
+tail(iris) # cetak 6 observasi terakhir
+tail(iris, 10) # cetak 10 observasi terakhir
 summary(iris) # membuat ringkasan data
-iris[1, ] # subset data pada baris 1
-iris[c(1, 6, 12),] # subset data pada baris 1,6, dan 12
-iris[ ,2] # subset atau ekstrak data pada kolom 2
-iris[2,2] # subset atau ekstrak data pada baris ke-2 dan kolom ke-2
+iris[1, ] # subset data pada baris 1 dan cetak dalam bentuk vektor
+iris[c(1, 6, 12),] # subset data pada baris 1,6, dan 12 dan cetak dalam bentuk vektor
+iris[ ,2] # subset atau ekstrak data pada kolom 2 dan cetak dalam bentuk vektor
+iris[2,2, drop=FALSE] # subset atau ekstrak data pada baris ke-2 dan kolom ke-2 dan tetap menjaga identitas data
 iris$Sepal.Length # ekstrak data pada kolom 'Sepal.Length'
 class(iris$Species) # cek jenis data kolom 'Species' pada objek iris
 length(iris$Petal.Width) # panjang data kolom 'Petal.Width' pada objek iris

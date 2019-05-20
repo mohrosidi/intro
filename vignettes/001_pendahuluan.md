@@ -42,10 +42,15 @@ head(mtcars) # melihat 6 baris pertama dari data mtcars, mtcars adalah data bawa
 
 Jika ingin menjalankan kode R dalam *chunck* tersebut, Anda dapat menggunakan pemintas Ctrl + Enter (menjalankan satu baris kode) atau Ctrl + Shift + Enter (menjalankan semua kode dalam *chunck*). Sekarang buatlah *chunck* baru yang isinya adalah baris kode R berikut: (Petunjuk: Gunakan Ctrl + Alt + I)
 
+
+```r
 filled.contour(volcano,
                color.palette = terrain.colors, 
                plot.title = title("Topografi Gunung Maunga Whau"), 
                key.title = title("Tinggi\n(meter)"))
+```
+
+![](001_pendahuluan_files/figure-html/unnamed-chunk-2-1.png)<!-- -->
 
 Setelah selesai membuat dokumen R Markdown yang berisikan konten tulisan beserta kode R, Anda dapat klik tombol **Knit** untuk menghasilkan dokumen baru sesuai dengan format dokumen yang diinginkan. Dalam contoh ini format dokumen keluaran R Markdown setelah menjalankan **Knit** adalah dokumen HTML. Anda dapat mengatur format dokumen keluaran dengan cara mengubah baris *output* pada YAML metadata (lihat baris paling atas dokumen ini) seperti contoh berikut:
 
@@ -303,7 +308,7 @@ dim(iris) # cek dimensi objek
 ```
 
 ```r
-str(iris) # cek struktur objek
+str(iris) # cek struktur internal objek (tipe data, dimesi, dan ringkasan nilai pada masing-masing variabel)
 ```
 
 ```
@@ -316,7 +321,7 @@ str(iris) # cek struktur objek
 ```
 
 ```r
-colnames(iris) # cek nama kolom
+colnames(iris) # cetak nama kolom iris
 ```
 
 ```
@@ -325,7 +330,7 @@ colnames(iris) # cek nama kolom
 ```
 
 ```r
-head(iris) # cek 6 observasi pertama
+head(iris) # cetak 6 observasi pertama
 ```
 
 ```
@@ -339,7 +344,7 @@ head(iris) # cek 6 observasi pertama
 ```
 
 ```r
-head(iris, 10) # cek 10 observasi pertama
+head(iris, 10) # cetak 10 observasi pertama
 ```
 
 ```
@@ -357,7 +362,7 @@ head(iris, 10) # cek 10 observasi pertama
 ```
 
 ```r
-tail(iris) # cek 6 observasi terakhir
+tail(iris) # cetak 6 observasi terakhir
 ```
 
 ```
@@ -371,7 +376,7 @@ tail(iris) # cek 6 observasi terakhir
 ```
 
 ```r
-tail(iris, 10) # cek 10 observasi terakhir
+tail(iris, 10) # cetak 10 observasi terakhir
 ```
 
 ```
@@ -410,7 +415,7 @@ summary(iris) # membuat ringkasan data
 ```
 
 ```r
-iris[1, ] # subset data pada baris 1
+iris[1, ] # subset data pada baris 1 dan cetak dalam bentuk vektor
 ```
 
 ```
@@ -419,7 +424,7 @@ iris[1, ] # subset data pada baris 1
 ```
 
 ```r
-iris[c(1, 6, 12),] # subset data pada baris 1,6, dan 12
+iris[c(1, 6, 12),] # subset data pada baris 1,6, dan 12 dan cetak dalam bentuk vektor
 ```
 
 ```
@@ -430,7 +435,7 @@ iris[c(1, 6, 12),] # subset data pada baris 1,6, dan 12
 ```
 
 ```r
-iris[ ,2] # subset atau ekstrak data pada kolom 2
+iris[ ,2] # subset atau ekstrak data pada kolom 2 dan cetak dalam bentuk vektor
 ```
 
 ```
@@ -446,11 +451,12 @@ iris[ ,2] # subset atau ekstrak data pada kolom 2
 ```
 
 ```r
-iris[2,2] # subset atau ekstrak data pada baris ke-2 dan kolom ke-2
+iris[2,2, drop=FALSE] # subset atau ekstrak data pada baris ke-2 dan kolom ke-2 dan tetap menjaga identitas data
 ```
 
 ```
-## [1] 3
+##   Sepal.Width
+## 2           3
 ```
 
 ```r
@@ -554,7 +560,7 @@ sum(iris$Petal.Length) # menghitung jumlah atau total nilai data pada kolom 'Pet
 plot(iris) # membuat visualisasi berupa matriks korelasi dari data iris
 ```
 
-![](001_pendahuluan_files/figure-html/unnamed-chunk-4-1.png)<!-- -->
+![](001_pendahuluan_files/figure-html/unnamed-chunk-5-1.png)<!-- -->
 
 ```r
 cor(iris[, -5]) # menghitung dan membuat matriks korelasi antar variabel atau kolom kecuali kolom ke-5 karena berupa faktor
