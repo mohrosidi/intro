@@ -107,7 +107,7 @@ median(iris$Sepal.Width) # menghitung nilai median kolom 'Sepal.Width'
 sum(iris$Petal.Length) # menghitung jumlah atau total nilai data pada kolom 'Petal.Length`
 plot(iris) # membuat visualisasi berupa matriks korelasi dari data iris
 cor(iris[, -5]) # menghitung dan membuat matriks korelasi antar variabel atau kolom kecuali kolom ke-5 karena berupa faktor
-write.csv(iris, file = "iris.csv", row.names = FALSE) # menyimpan hasil kedalam forma file .csv
+write.csv(iris, file = "iris.csv", row.names = FALSE) # menyimpan hasil kedalam format file .csv
 ```
 
 Dari catatan ringkas mengenai fungsi-fungsi di atas, dapatkah Anda menebak mana fungsi yang berjenis '*changing the environment*' dan mana yang berjenis '*calculating value*'?
