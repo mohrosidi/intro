@@ -32,7 +32,7 @@ library(readr)
 Paket hanya perlu dipasang satu kali melalui fungsi `install.packages("nama_paket")` dan harus selalu diaktifkan setiap menggawali kerja menggunakan R agar fungsi-fungsi yang tersedia dalam paket tersebut dapat digunakan. Sebagai contoh, kita akan menggunakan fungsi `read_csv()` dari paket `readr` untuk mengimpor data 'evals.csv' dari folder 'data-raw' sebagai berikut:
 
 ```{r}
-evals <- read_csv("../data-raw/evals.csv")
+evals <- read_csv("../data-raw/evals.csv") # menggunakan alamat relatif agar lebih reproducible
 evals
 ```
 

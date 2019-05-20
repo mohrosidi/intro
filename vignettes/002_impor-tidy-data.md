@@ -36,7 +36,7 @@ Paket hanya perlu dipasang satu kali melalui fungsi `install.packages("nama_pake
 
 
 ```r
-evals <- read_csv("../data-raw/evals.csv")
+evals <- read_csv("../data-raw/evals.csv") # menggunakan alamat relatif agar lebih reproducible
 ```
 
 ```

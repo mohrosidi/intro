@@ -1589,7 +1589,7 @@ div.tocify {
 <pre class="r"><code>library(readr)</code></pre>
 <pre><code>## Warning: package &#39;readr&#39; was built under R version 3.5.3</code></pre>
 <p>Paket hanya perlu dipasang satu kali melalui fungsi <code>install.packages(&quot;nama_paket&quot;)</code> dan harus selalu diaktifkan setiap menggawali kerja menggunakan R agar fungsi-fungsi yang tersedia dalam paket tersebut dapat digunakan. Sebagai contoh, kita akan menggunakan fungsi <code>read_csv()</code> dari paket <code>readr</code> untuk mengimpor data ‘evals.csv’ dari folder ‘data-raw’ sebagai berikut:</p>
-<pre class="r"><code>evals &lt;- read_csv(&quot;../data-raw/evals.csv&quot;)</code></pre>
+<pre class="r"><code>evals &lt;- read_csv(&quot;../data-raw/evals.csv&quot;) # menggunakan alamat relatif agar lebih reproducible</code></pre>
 <pre><code>## Parsed with column specification:
 ## cols(
 ##   .default = col_double(),
