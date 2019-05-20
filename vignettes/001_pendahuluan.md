@@ -580,4 +580,16 @@ write.csv(iris, file = "iris.csv", row.names = FALSE) # menyimpan hasil kedalam 
 
 Dari catatan ringkas mengenai fungsi-fungsi di atas, dapatkah Anda menebak mana fungsi yang berjenis '*changing the environment*' dan mana yang berjenis '*calculating value*'?
 
+'*changing the environment*'. dapat disimpan sebagai objek dengan menambahkan asigning operator
+
+1. cor()
+2. c()
+3. dsb
+
+'*calculating value*'.
+
+1. plot()
+2. typeof()
+3. dsb
+
 Sekarang Anda dipersilakan untuk menekan tombol **Knit** (Ctrl + Shift + K) untuk menghasilkan dokumen html dari dokumen R Markdown ini. 
