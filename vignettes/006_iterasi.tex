@@ -1,0 +1,721 @@
+\documentclass[]{article}
+\usepackage{lmodern}
+\usepackage{amssymb,amsmath}
+\usepackage{ifxetex,ifluatex}
+\usepackage{fixltx2e} % provides \textsubscript
+\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+\else % if luatex or xelatex
+  \ifxetex
+    \usepackage{mathspec}
+  \else
+    \usepackage{fontspec}
+  \fi
+  \defaultfontfeatures{Ligatures=TeX,Scale=MatchLowercase}
+\fi
+% use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+% use microtype if available
+\IfFileExists{microtype.sty}{%
+\usepackage{microtype}
+\UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\usepackage[margin=1in]{geometry}
+\usepackage{hyperref}
+\hypersetup{unicode=true,
+            pdftitle={Iterasi},
+            pdfauthor={Muhammad Aswan Syahputra},
+            pdfborder={0 0 0},
+            breaklinks=true}
+\urlstyle{same}  % don't use monospace font for urls
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\usepackage{framed}
+\definecolor{shadecolor}{RGB}{248,248,248}
+\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.94,0.16,0.16}{#1}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.77,0.63,0.00}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\BuiltInTok}[1]{#1}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.64,0.00,0.00}{\textbf{#1}}}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ImportTok}[1]{#1}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\usepackage{graphicx,grffile}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+\IfFileExists{parskip.sty}{%
+\usepackage{parskip}
+}{% else
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{6pt plus 2pt minus 1pt}
+}
+\setlength{\emergencystretch}{3em}  % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{0}
+% Redefines (sub)paragraphs to behave more like sections
+\ifx\paragraph\undefined\else
+\let\oldparagraph\paragraph
+\renewcommand{\paragraph}[1]{\oldparagraph{#1}\mbox{}}
+\fi
+\ifx\subparagraph\undefined\else
+\let\oldsubparagraph\subparagraph
+\renewcommand{\subparagraph}[1]{\oldsubparagraph{#1}\mbox{}}
+\fi
+
+%%% Use protect on footnotes to avoid problems with footnotes in titles
+\let\rmarkdownfootnote\footnote%
+\def\footnote{\protect\rmarkdownfootnote}
+
+%%% Change title format to be more compact
+\usepackage{titling}
+
+% Create subtitle command for use in maketitle
+\providecommand{\subtitle}[1]{
+  \posttitle{
+    \begin{center}\large#1\end{center}
+    }
+}
+
+\setlength{\droptitle}{-2em}
+
+  \title{Iterasi}
+    \pretitle{\vspace{\droptitle}\centering\huge}
+  \posttitle{\par}
+    \author{Muhammad Aswan Syahputra}
+    \preauthor{\centering\large\emph}
+  \postauthor{\par}
+      \predate{\centering\large\emph}
+  \postdate{\par}
+    \date{4/9/2019}
+
+
+\begin{document}
+\maketitle
+
+{
+\setcounter{tocdepth}{2}
+\tableofcontents
+}
+Di bahasa pemrograman R, iterasi atau perulangan dapat dilakukan dengan
+beberapa cara, misalnya menggunakan \texttt{for\ loop}, keluarga
+\texttt{apply} (dari paket \texttt{base}), dan keluarga \texttt{map}
+(dari paket \texttt{purrr}).
+
+Dalam contoh kasus ini, Anda diminta untuk mengimpor beberapa berkas
+\texttt{csv} secara sekaligus dan membuatnya ke dalam satu dataframe.
+Aktifkanlah paket yang memiliki fungsi untuk membuka berkas
+\texttt{csv}!
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{library}\NormalTok{(readr)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Warning: package 'readr' was built under R version 3.5.3
+\end{verbatim}
+
+Berkas csv yang akan Anda impor memiliki informasi mengenai data lelang
+kota Bandung selama beberapa tahun, dimulai dari tahun 2013 hingga 2017.
+Data masing-masing tahun disimpan dalam berkas csv yang berbeda dan
+tersedia pada direktori `data-raw'. Melalui `\emph{File pane}' di
+RStudio (kanan bawah), Anda dapat bernavigasi ke direktori tersebut.
+Apakah nama berkas csv yang akan segera Anda impor? Bagaimana pola
+penamaan berkas-berkas tersebut?
+
+Selain melihat nama berkas secara manual, Anda juga dapat menggunakan
+fungsi \texttt{list.files()} melalui R untuk membuat daftar nama berkas
+dari suatu direktori. Dapatkah Anda membuat daftar nama berkas yang Akan
+diimpor dengan menggunakan fungsi tersebut? Gunakan pola penamaan berkas
+yang telah Anda pelajari sebagai isian untuk argumen \texttt{pattern}
+pada fungsi \texttt{list.files}!
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{daftar_berkas <-}\StringTok{ }\KeywordTok{list.files}\NormalTok{(}\StringTok{"../data-raw"}\NormalTok{, }\DataTypeTok{pattern =} \StringTok{"lelang-bandung"}\NormalTok{, }\DataTypeTok{full.names =} \OtherTok{TRUE}\NormalTok{)}
+\NormalTok{daftar_berkas}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "../data-raw/001_lelang-bandung_2013.csv"
+## [2] "../data-raw/002_lelang-bandung_2014.csv"
+## [3] "../data-raw/003_lelang-bandung_2015.csv"
+## [4] "../data-raw/004_lelang-bandung_2016.csv"
+## [5] "../data-raw/005_lelang-bandung_2017.csv"
+\end{verbatim}
+
+Anda telah memiliki daftar nama berkas yang akan diimpor. Sekarang Anda
+akan mempelajari cara membuka berkas tersebut secara sekaligus melalui
+iterasi.
+
+\hypertarget{for-loop}{%
+\subsection{For Loop}\label{for-loop}}
+
+Cara pertama yang akan Anda pelajari adalah dengan menggunakan
+\texttt{for\ loop}. Prinsip dan struktur penggunaannya adalah sebagai
+berikut:
+
+\begin{verbatim}
+input <- sesuatu
+
+output <- vector(mode, length)      # 1. Output
+for (i in seq_along(output)) {      # 2. Urutan
+  output[[i]] <- fungsi(input[[i]]) # 3. Badan
+}
+output
+\end{verbatim}
+
+Dapatkah Anda melengkapi kode berikut untuk mengimpor berkas-berkas csv
+yang tercatat dalam obyek `daftar\_berkas'? Simpanlah \texttt{output}
+dengan nama \texttt{output\_for}! Anda juga dapat membuka obyek
+\texttt{output\_for} pada konsol untuk dapat melihat struktur data
+tersebut dengan lebih jelas.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{daftar_berkas}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "../data-raw/001_lelang-bandung_2013.csv"
+## [2] "../data-raw/002_lelang-bandung_2014.csv"
+## [3] "../data-raw/003_lelang-bandung_2015.csv"
+## [4] "../data-raw/004_lelang-bandung_2016.csv"
+## [5] "../data-raw/005_lelang-bandung_2017.csv"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{output_for <-}\StringTok{ }\KeywordTok{vector}\NormalTok{(}\DataTypeTok{mode =} \StringTok{"list"}\NormalTok{, }\DataTypeTok{length =} \KeywordTok{length}\NormalTok{(daftar_berkas))}
+\ControlFlowTok{for}\NormalTok{ (i }\ControlFlowTok{in} \KeywordTok{seq_along}\NormalTok{(output_for)) \{}
+\NormalTok{  output_for[[i]] <-}\StringTok{ }\KeywordTok{read_csv}\NormalTok{(daftar_berkas[[i]])}
+\NormalTok{\}}
+\NormalTok{output_for}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [[1]]
+## # A tibble: 680 x 32
+##    kode_lelang nama_lelang kode_rup tanggal_pembuat~ keterangan
+##          <dbl> <chr>       <lgl>    <date>           <lgl>     
+##  1        5260 J5-Peningk~ NA       2013-02-19       NA        
+##  2      171260 B2-Peningk~ NA       2013-02-21       NA        
+##  3      374260 J126-Penin~ NA       2013-04-24       NA        
+##  4      452260 J140-Penin~ NA       2013-05-19       NA        
+##  5      521260 Belanja Mo~ NA       2013-05-20       NA        
+##  6      571260 Pengadaan ~ NA       2013-06-11       NA        
+##  7      727260 Pembanguna~ NA       2013-08-07       NA        
+##  8      628260 SS-06 Bang~ NA       2013-06-25       NA        
+##  9      772260 Belanja Mo~ NA       2013-08-13       NA        
+## 10      889260 PKP1-Penga~ NA       2013-09-18       NA        
+## # ... with 670 more rows, and 27 more variables: tahapan_lelang <chr>,
+## #   instansi <chr>, satuan_kerja <chr>, kategori <chr>,
+## #   metode_pengadaan <chr>, metode_kualifikasi <chr>,
+## #   metode_dokumen <chr>, metode_evaluasi <chr>, tahun_anggaran <chr>,
+## #   tahun <dbl>, pagu <dbl>, hps <dbl>, cara_pembayaran <chr>,
+## #   pembebanan_ta <chr>, sumber_pendanaan <chr>, lokasi <chr>,
+## #   kualifikasi_usaha <chr>, peserta_lelang <dbl>, agency <chr>,
+## #   satker <chr>, nama_pemenang <chr>, alamat <chr>, npwp <chr>,
+## #   hasil_negosiasi <lgl>, harga_penawaran <dbl>, harga_terkoreksi <dbl>,
+## #   gagal_lelang <chr>
+## 
+## [[2]]
+## # A tibble: 763 x 32
+##    kode_lelang nama_lelang kode_rup tanggal_pembuat~ keterangan
+##          <dbl> <chr>          <dbl> <date>           <lgl>     
+##  1     1002260 Jasa Konsu~       NA 2014-02-21       NA        
+##  2     1003260 Jasa Konsu~   625017 2014-02-21       NA        
+##  3     1008260 Pengoperas~       NA 2014-03-03       NA        
+##  4     1007260 Pengoperas~       NA 2014-03-03       NA        
+##  5     1009260 Jasa Konsu~   792674 2014-03-10       NA        
+##  6     1013260 Kajian Mod~       NA 2014-03-12       NA        
+##  7     1014260 Belanja Pr~       NA 2014-03-14       NA        
+##  8     1016260 Jasa Tenag~       NA 2014-03-18       NA        
+##  9     1015260 Jasa Konsu~       NA 2014-03-18       NA        
+## 10     1017260 Jasa Tenag~       NA 2014-03-18       NA        
+## # ... with 753 more rows, and 27 more variables: tahapan_lelang <chr>,
+## #   instansi <chr>, satuan_kerja <chr>, kategori <chr>,
+## #   metode_pengadaan <chr>, metode_kualifikasi <chr>,
+## #   metode_dokumen <chr>, metode_evaluasi <chr>, tahun_anggaran <chr>,
+## #   tahun <dbl>, pagu <dbl>, hps <dbl>, cara_pembayaran <chr>,
+## #   pembebanan_ta <chr>, sumber_pendanaan <chr>, lokasi <chr>,
+## #   kualifikasi_usaha <chr>, peserta_lelang <dbl>, agency <chr>,
+## #   satker <chr>, nama_pemenang <chr>, alamat <chr>, npwp <chr>,
+## #   hasil_negosiasi <lgl>, harga_penawaran <dbl>, harga_terkoreksi <dbl>,
+## #   gagal_lelang <chr>
+## 
+## [[3]]
+## # A tibble: 638 x 32
+##    kode_lelang nama_lelang kode_rup tanggal_pembuat~ keterangan
+##          <dbl> <chr>          <dbl> <date>           <lgl>     
+##  1     2161260 Belanja Ba~       NA 2015-01-06       NA        
+##  2     2164260 Pengadaan ~  2558197 2015-02-09       NA        
+##  3     2166260 Perawatan ~       NA 2015-02-10       NA        
+##  4     2165260 Perawatan ~       NA 2015-02-10       NA        
+##  5     2163260 "Pengadaan~  2837522 2015-02-12       NA        
+##  6     2173260 Peningkata~  3024560 2015-02-17       NA        
+##  7     2174260 Peningkata~  3024515 2015-02-17       NA        
+##  8     2178260 Peningkata~  3024663 2015-02-17       NA        
+##  9     2172260 Peningkata~  3024534 2015-02-17       NA        
+## 10     2167260 Peningkata~  3024431 2015-02-17       NA        
+## # ... with 628 more rows, and 27 more variables: tahapan_lelang <chr>,
+## #   instansi <chr>, satuan_kerja <chr>, kategori <chr>,
+## #   metode_pengadaan <chr>, metode_kualifikasi <chr>,
+## #   metode_dokumen <chr>, metode_evaluasi <chr>, tahun_anggaran <chr>,
+## #   tahun <dbl>, pagu <dbl>, hps <dbl>, cara_pembayaran <chr>,
+## #   pembebanan_ta <chr>, sumber_pendanaan <chr>, lokasi <chr>,
+## #   kualifikasi_usaha <chr>, peserta_lelang <dbl>, agency <chr>,
+## #   satker <chr>, nama_pemenang <chr>, alamat <chr>, npwp <chr>,
+## #   hasil_negosiasi <lgl>, harga_penawaran <dbl>, harga_terkoreksi <dbl>,
+## #   gagal_lelang <chr>
+## 
+## [[4]]
+## # A tibble: 785 x 32
+##    kode_lelang nama_lelang kode_rup tanggal_pembuat~ keterangan
+##          <dbl> <chr>          <dbl> <date>           <chr>     
+##  1     2994260 Belanja Ba~  5035789 2015-12-11       <NA>      
+##  2     2995260 Belanja Ja~  5026929 2015-12-11       <NA>      
+##  3     2996260 Belanja Ma~  5027086 2015-12-11       <NA>      
+##  4     2997260 Belanja Ja~  5027006 2015-12-11       <NA>      
+##  5     2998260 Belanja Ja~  5037194 2015-12-11       <NA>      
+##  6     2999260 Belanja Ja~  5037172 2015-12-11       <NA>      
+##  7     3000260 Belanja Ja~  5037210 2015-12-11       <NA>      
+##  8     3007260 Jasa Penga~  5054575 2015-12-11       <NA>      
+##  9     3013260 Penyediaan~  5057427 2015-12-11       <NA>      
+## 10     3014260 Pengadaan ~  5043143 2016-01-12       <NA>      
+## # ... with 775 more rows, and 27 more variables: tahapan_lelang <chr>,
+## #   instansi <chr>, satuan_kerja <chr>, kategori <chr>,
+## #   metode_pengadaan <chr>, metode_kualifikasi <chr>,
+## #   metode_dokumen <chr>, metode_evaluasi <chr>, tahun_anggaran <chr>,
+## #   tahun <dbl>, pagu <dbl>, hps <dbl>, cara_pembayaran <chr>,
+## #   pembebanan_ta <chr>, sumber_pendanaan <chr>, lokasi <chr>,
+## #   kualifikasi_usaha <chr>, peserta_lelang <dbl>, agency <chr>,
+## #   satker <chr>, nama_pemenang <chr>, alamat <chr>, npwp <chr>,
+## #   hasil_negosiasi <lgl>, harga_penawaran <dbl>, harga_terkoreksi <dbl>,
+## #   gagal_lelang <chr>
+## 
+## [[5]]
+## # A tibble: 414 x 32
+##    kode_lelang nama_lelang kode_rup tanggal_pembuat~ keterangan
+##          <dbl> <chr>          <dbl> <date>           <chr>     
+##  1     4542260 Pengadaan ~ 11633430 2017-09-08       <NA>      
+##  2     4135260 Belanja Al~ 11005893 2017-05-03       <NA>      
+##  3     4244260 Belanja Ja~ 11367750 2017-06-09       <NA>      
+##  4     4462260 Belanja Ja~ 12437947 2017-08-11       <NA>      
+##  5     4393260 Belanja Ja~ 11999277 2017-07-27       <NA>      
+##  6     4231260 Belanja ja~ 12162438 2017-05-31       <NA>      
+##  7     4233260 Belanja ja~ 12156963 2017-05-31       <NA>      
+##  8     4234260 Belanja ja~ 12150139 2017-05-31       <NA>      
+##  9     4232260 Belanja ja~ 12150318 2017-05-31       <NA>      
+## 10     4238260 Belanja ja~ 12156804 2017-05-31       <NA>      
+## # ... with 404 more rows, and 27 more variables: tahapan_lelang <chr>,
+## #   instansi <chr>, satuan_kerja <chr>, kategori <chr>,
+## #   metode_pengadaan <chr>, metode_kualifikasi <chr>,
+## #   metode_dokumen <chr>, metode_evaluasi <chr>, tahun_anggaran <chr>,
+## #   tahun <dbl>, pagu <dbl>, hps <dbl>, cara_pembayaran <chr>,
+## #   pembebanan_ta <chr>, sumber_pendanaan <chr>, lokasi <chr>,
+## #   kualifikasi_usaha <chr>, peserta_lelang <dbl>, agency <chr>,
+## #   satker <chr>, nama_pemenang <chr>, alamat <chr>, npwp <chr>,
+## #   hasil_negosiasi <dbl>, harga_penawaran <dbl>, harga_terkoreksi <dbl>,
+## #   gagal_lelang <chr>
+\end{verbatim}
+
+Selamat! Anda telah berhasil mengimpor berkas-berkas csv tersebut.
+Namun, jika diperhatikan tipe dari obyek `output\_for' adalah berupa
+list sedangkan yang diinginkan adalah berupa dataframe. Anda dapat
+menggunakan fungsi \texttt{rbind()} untuk menggabungkan dua dataframe,
+namun pada kasus ini Anda memiliki lima dataframe sehingga fungsi
+\texttt{rbind()} tidak bisa langsung digunakan. Untuk menggabungkan
+lebih dari dua dataframe, Anda dapat menggunakan bantuan dari fungsi
+\texttt{Reduce} seperti contoh berikut:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{typeof}\NormalTok{(output_for) }\CommentTok{# cek tipe dari output_for}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "list"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{output_for <-}\StringTok{ }\KeywordTok{Reduce}\NormalTok{(rbind, output_for)}
+\NormalTok{output_for}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 3,280 x 32
+##    kode_lelang nama_lelang kode_rup tanggal_pembuat~ keterangan
+##          <dbl> <chr>          <dbl> <date>           <chr>     
+##  1        5260 J5-Peningk~       NA 2013-02-19       <NA>      
+##  2      171260 B2-Peningk~       NA 2013-02-21       <NA>      
+##  3      374260 J126-Penin~       NA 2013-04-24       <NA>      
+##  4      452260 J140-Penin~       NA 2013-05-19       <NA>      
+##  5      521260 Belanja Mo~       NA 2013-05-20       <NA>      
+##  6      571260 Pengadaan ~       NA 2013-06-11       <NA>      
+##  7      727260 Pembanguna~       NA 2013-08-07       <NA>      
+##  8      628260 SS-06 Bang~       NA 2013-06-25       <NA>      
+##  9      772260 Belanja Mo~       NA 2013-08-13       <NA>      
+## 10      889260 PKP1-Penga~       NA 2013-09-18       <NA>      
+## # ... with 3,270 more rows, and 27 more variables: tahapan_lelang <chr>,
+## #   instansi <chr>, satuan_kerja <chr>, kategori <chr>,
+## #   metode_pengadaan <chr>, metode_kualifikasi <chr>,
+## #   metode_dokumen <chr>, metode_evaluasi <chr>, tahun_anggaran <chr>,
+## #   tahun <dbl>, pagu <dbl>, hps <dbl>, cara_pembayaran <chr>,
+## #   pembebanan_ta <chr>, sumber_pendanaan <chr>, lokasi <chr>,
+## #   kualifikasi_usaha <chr>, peserta_lelang <dbl>, agency <chr>,
+## #   satker <chr>, nama_pemenang <chr>, alamat <chr>, npwp <chr>,
+## #   hasil_negosiasi <dbl>, harga_penawaran <dbl>, harga_terkoreksi <dbl>,
+## #   gagal_lelang <chr>
+\end{verbatim}
+
+\hypertarget{keluarga-apply}{%
+\subsection{\texorpdfstring{Keluarga
+\texttt{apply}}{Keluarga apply}}\label{keluarga-apply}}
+
+Sekarang Anda akan menggunakan jenis iterasi yang umumnya digunakan di
+R, yaitu menggunakan keluarga \texttt{apply} (\texttt{apply},
+\texttt{lapply}, \texttt{sapply}, \texttt{vapply}, dan seterusnya).
+Dalam contoh ini Anda akan menggunakan fungsi \texttt{lapply()} dengan
+struktur penulisan seperti berikut:
+
+\begin{verbatim}
+input <- sesuatu
+output <- lapply(input, nama_fungsi)
+\end{verbatim}
+
+Silakan lengkapi kode berikut untuk mengimpor berkas csv dengan
+menggunakan fungsi \texttt{lapply()}! Simpanlah \texttt{output} dengan
+nama \texttt{output\_lapply}.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{daftar_berkas}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "../data-raw/001_lelang-bandung_2013.csv"
+## [2] "../data-raw/002_lelang-bandung_2014.csv"
+## [3] "../data-raw/003_lelang-bandung_2015.csv"
+## [4] "../data-raw/004_lelang-bandung_2016.csv"
+## [5] "../data-raw/005_lelang-bandung_2017.csv"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{output_lapply <-}\StringTok{ }\KeywordTok{lapply}\NormalTok{(daftar_berkas, read_csv)}
+\NormalTok{output_lapply}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [[1]]
+## # A tibble: 680 x 32
+##    kode_lelang nama_lelang kode_rup tanggal_pembuat~ keterangan
+##          <dbl> <chr>       <lgl>    <date>           <lgl>     
+##  1        5260 J5-Peningk~ NA       2013-02-19       NA        
+##  2      171260 B2-Peningk~ NA       2013-02-21       NA        
+##  3      374260 J126-Penin~ NA       2013-04-24       NA        
+##  4      452260 J140-Penin~ NA       2013-05-19       NA        
+##  5      521260 Belanja Mo~ NA       2013-05-20       NA        
+##  6      571260 Pengadaan ~ NA       2013-06-11       NA        
+##  7      727260 Pembanguna~ NA       2013-08-07       NA        
+##  8      628260 SS-06 Bang~ NA       2013-06-25       NA        
+##  9      772260 Belanja Mo~ NA       2013-08-13       NA        
+## 10      889260 PKP1-Penga~ NA       2013-09-18       NA        
+## # ... with 670 more rows, and 27 more variables: tahapan_lelang <chr>,
+## #   instansi <chr>, satuan_kerja <chr>, kategori <chr>,
+## #   metode_pengadaan <chr>, metode_kualifikasi <chr>,
+## #   metode_dokumen <chr>, metode_evaluasi <chr>, tahun_anggaran <chr>,
+## #   tahun <dbl>, pagu <dbl>, hps <dbl>, cara_pembayaran <chr>,
+## #   pembebanan_ta <chr>, sumber_pendanaan <chr>, lokasi <chr>,
+## #   kualifikasi_usaha <chr>, peserta_lelang <dbl>, agency <chr>,
+## #   satker <chr>, nama_pemenang <chr>, alamat <chr>, npwp <chr>,
+## #   hasil_negosiasi <lgl>, harga_penawaran <dbl>, harga_terkoreksi <dbl>,
+## #   gagal_lelang <chr>
+## 
+## [[2]]
+## # A tibble: 763 x 32
+##    kode_lelang nama_lelang kode_rup tanggal_pembuat~ keterangan
+##          <dbl> <chr>          <dbl> <date>           <lgl>     
+##  1     1002260 Jasa Konsu~       NA 2014-02-21       NA        
+##  2     1003260 Jasa Konsu~   625017 2014-02-21       NA        
+##  3     1008260 Pengoperas~       NA 2014-03-03       NA        
+##  4     1007260 Pengoperas~       NA 2014-03-03       NA        
+##  5     1009260 Jasa Konsu~   792674 2014-03-10       NA        
+##  6     1013260 Kajian Mod~       NA 2014-03-12       NA        
+##  7     1014260 Belanja Pr~       NA 2014-03-14       NA        
+##  8     1016260 Jasa Tenag~       NA 2014-03-18       NA        
+##  9     1015260 Jasa Konsu~       NA 2014-03-18       NA        
+## 10     1017260 Jasa Tenag~       NA 2014-03-18       NA        
+## # ... with 753 more rows, and 27 more variables: tahapan_lelang <chr>,
+## #   instansi <chr>, satuan_kerja <chr>, kategori <chr>,
+## #   metode_pengadaan <chr>, metode_kualifikasi <chr>,
+## #   metode_dokumen <chr>, metode_evaluasi <chr>, tahun_anggaran <chr>,
+## #   tahun <dbl>, pagu <dbl>, hps <dbl>, cara_pembayaran <chr>,
+## #   pembebanan_ta <chr>, sumber_pendanaan <chr>, lokasi <chr>,
+## #   kualifikasi_usaha <chr>, peserta_lelang <dbl>, agency <chr>,
+## #   satker <chr>, nama_pemenang <chr>, alamat <chr>, npwp <chr>,
+## #   hasil_negosiasi <lgl>, harga_penawaran <dbl>, harga_terkoreksi <dbl>,
+## #   gagal_lelang <chr>
+## 
+## [[3]]
+## # A tibble: 638 x 32
+##    kode_lelang nama_lelang kode_rup tanggal_pembuat~ keterangan
+##          <dbl> <chr>          <dbl> <date>           <lgl>     
+##  1     2161260 Belanja Ba~       NA 2015-01-06       NA        
+##  2     2164260 Pengadaan ~  2558197 2015-02-09       NA        
+##  3     2166260 Perawatan ~       NA 2015-02-10       NA        
+##  4     2165260 Perawatan ~       NA 2015-02-10       NA        
+##  5     2163260 "Pengadaan~  2837522 2015-02-12       NA        
+##  6     2173260 Peningkata~  3024560 2015-02-17       NA        
+##  7     2174260 Peningkata~  3024515 2015-02-17       NA        
+##  8     2178260 Peningkata~  3024663 2015-02-17       NA        
+##  9     2172260 Peningkata~  3024534 2015-02-17       NA        
+## 10     2167260 Peningkata~  3024431 2015-02-17       NA        
+## # ... with 628 more rows, and 27 more variables: tahapan_lelang <chr>,
+## #   instansi <chr>, satuan_kerja <chr>, kategori <chr>,
+## #   metode_pengadaan <chr>, metode_kualifikasi <chr>,
+## #   metode_dokumen <chr>, metode_evaluasi <chr>, tahun_anggaran <chr>,
+## #   tahun <dbl>, pagu <dbl>, hps <dbl>, cara_pembayaran <chr>,
+## #   pembebanan_ta <chr>, sumber_pendanaan <chr>, lokasi <chr>,
+## #   kualifikasi_usaha <chr>, peserta_lelang <dbl>, agency <chr>,
+## #   satker <chr>, nama_pemenang <chr>, alamat <chr>, npwp <chr>,
+## #   hasil_negosiasi <lgl>, harga_penawaran <dbl>, harga_terkoreksi <dbl>,
+## #   gagal_lelang <chr>
+## 
+## [[4]]
+## # A tibble: 785 x 32
+##    kode_lelang nama_lelang kode_rup tanggal_pembuat~ keterangan
+##          <dbl> <chr>          <dbl> <date>           <chr>     
+##  1     2994260 Belanja Ba~  5035789 2015-12-11       <NA>      
+##  2     2995260 Belanja Ja~  5026929 2015-12-11       <NA>      
+##  3     2996260 Belanja Ma~  5027086 2015-12-11       <NA>      
+##  4     2997260 Belanja Ja~  5027006 2015-12-11       <NA>      
+##  5     2998260 Belanja Ja~  5037194 2015-12-11       <NA>      
+##  6     2999260 Belanja Ja~  5037172 2015-12-11       <NA>      
+##  7     3000260 Belanja Ja~  5037210 2015-12-11       <NA>      
+##  8     3007260 Jasa Penga~  5054575 2015-12-11       <NA>      
+##  9     3013260 Penyediaan~  5057427 2015-12-11       <NA>      
+## 10     3014260 Pengadaan ~  5043143 2016-01-12       <NA>      
+## # ... with 775 more rows, and 27 more variables: tahapan_lelang <chr>,
+## #   instansi <chr>, satuan_kerja <chr>, kategori <chr>,
+## #   metode_pengadaan <chr>, metode_kualifikasi <chr>,
+## #   metode_dokumen <chr>, metode_evaluasi <chr>, tahun_anggaran <chr>,
+## #   tahun <dbl>, pagu <dbl>, hps <dbl>, cara_pembayaran <chr>,
+## #   pembebanan_ta <chr>, sumber_pendanaan <chr>, lokasi <chr>,
+## #   kualifikasi_usaha <chr>, peserta_lelang <dbl>, agency <chr>,
+## #   satker <chr>, nama_pemenang <chr>, alamat <chr>, npwp <chr>,
+## #   hasil_negosiasi <lgl>, harga_penawaran <dbl>, harga_terkoreksi <dbl>,
+## #   gagal_lelang <chr>
+## 
+## [[5]]
+## # A tibble: 414 x 32
+##    kode_lelang nama_lelang kode_rup tanggal_pembuat~ keterangan
+##          <dbl> <chr>          <dbl> <date>           <chr>     
+##  1     4542260 Pengadaan ~ 11633430 2017-09-08       <NA>      
+##  2     4135260 Belanja Al~ 11005893 2017-05-03       <NA>      
+##  3     4244260 Belanja Ja~ 11367750 2017-06-09       <NA>      
+##  4     4462260 Belanja Ja~ 12437947 2017-08-11       <NA>      
+##  5     4393260 Belanja Ja~ 11999277 2017-07-27       <NA>      
+##  6     4231260 Belanja ja~ 12162438 2017-05-31       <NA>      
+##  7     4233260 Belanja ja~ 12156963 2017-05-31       <NA>      
+##  8     4234260 Belanja ja~ 12150139 2017-05-31       <NA>      
+##  9     4232260 Belanja ja~ 12150318 2017-05-31       <NA>      
+## 10     4238260 Belanja ja~ 12156804 2017-05-31       <NA>      
+## # ... with 404 more rows, and 27 more variables: tahapan_lelang <chr>,
+## #   instansi <chr>, satuan_kerja <chr>, kategori <chr>,
+## #   metode_pengadaan <chr>, metode_kualifikasi <chr>,
+## #   metode_dokumen <chr>, metode_evaluasi <chr>, tahun_anggaran <chr>,
+## #   tahun <dbl>, pagu <dbl>, hps <dbl>, cara_pembayaran <chr>,
+## #   pembebanan_ta <chr>, sumber_pendanaan <chr>, lokasi <chr>,
+## #   kualifikasi_usaha <chr>, peserta_lelang <dbl>, agency <chr>,
+## #   satker <chr>, nama_pemenang <chr>, alamat <chr>, npwp <chr>,
+## #   hasil_negosiasi <dbl>, harga_penawaran <dbl>, harga_terkoreksi <dbl>,
+## #   gagal_lelang <chr>
+\end{verbatim}
+
+Dapatkah Anda memeriksa jenis dari obyek \texttt{output\_lapply}?
+Tuliskanlah kode untuk mengubah \texttt{output\_lapply} menjadi satu
+dataframe dan simpanlah hasilnya dengan nama \texttt{output\_lapply}!
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{typeof}\NormalTok{(output_lapply) }\CommentTok{# cek jenis dari output_lapply}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "list"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{output_lapply <-}\StringTok{ }\KeywordTok{Reduce}\NormalTok{(rbind,output_lapply)}
+\NormalTok{output_lapply}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 3,280 x 32
+##    kode_lelang nama_lelang kode_rup tanggal_pembuat~ keterangan
+##          <dbl> <chr>          <dbl> <date>           <chr>     
+##  1        5260 J5-Peningk~       NA 2013-02-19       <NA>      
+##  2      171260 B2-Peningk~       NA 2013-02-21       <NA>      
+##  3      374260 J126-Penin~       NA 2013-04-24       <NA>      
+##  4      452260 J140-Penin~       NA 2013-05-19       <NA>      
+##  5      521260 Belanja Mo~       NA 2013-05-20       <NA>      
+##  6      571260 Pengadaan ~       NA 2013-06-11       <NA>      
+##  7      727260 Pembanguna~       NA 2013-08-07       <NA>      
+##  8      628260 SS-06 Bang~       NA 2013-06-25       <NA>      
+##  9      772260 Belanja Mo~       NA 2013-08-13       <NA>      
+## 10      889260 PKP1-Penga~       NA 2013-09-18       <NA>      
+## # ... with 3,270 more rows, and 27 more variables: tahapan_lelang <chr>,
+## #   instansi <chr>, satuan_kerja <chr>, kategori <chr>,
+## #   metode_pengadaan <chr>, metode_kualifikasi <chr>,
+## #   metode_dokumen <chr>, metode_evaluasi <chr>, tahun_anggaran <chr>,
+## #   tahun <dbl>, pagu <dbl>, hps <dbl>, cara_pembayaran <chr>,
+## #   pembebanan_ta <chr>, sumber_pendanaan <chr>, lokasi <chr>,
+## #   kualifikasi_usaha <chr>, peserta_lelang <dbl>, agency <chr>,
+## #   satker <chr>, nama_pemenang <chr>, alamat <chr>, npwp <chr>,
+## #   hasil_negosiasi <dbl>, harga_penawaran <dbl>, harga_terkoreksi <dbl>,
+## #   gagal_lelang <chr>
+\end{verbatim}
+
+\hypertarget{keluarga-map}{%
+\subsection{\texorpdfstring{Keluarga
+\texttt{map}}{Keluarga map}}\label{keluarga-map}}
+
+Terakhir, Anda akan melakukan impor data dengan menggunakan keluarga
+\texttt{map} dari paket \texttt{purrr}. Adapun fungsi yang akan
+digunakan adalah \texttt{map\_dfr} (silakan baca dokumentasi dengan
+menjalankan \texttt{?map\_dfr}). Struktur penulisan kode di keluarga
+\texttt{map} serupa dengan penulisan kode di keluarga \texttt{apply},
+yaitu sebagai berikut:
+
+\begin{verbatim}
+input <- sesuatu
+output <- lapply(input, nama_fungsi)
+\end{verbatim}
+
+Lengkapi kode berikut untuk mengimpor berkas csv dengan menggunakan
+\texttt{map\_dfr} dan simpanlah \texttt{output} dengan nama
+\texttt{output\_map}. Dapatkah Anda menemukan perbedaan antara hasil
+dari fungsi \texttt{map\_dfr} dengan \texttt{for\ loop} dan
+\texttt{lapply} pada contoh sebelumnya? Jalankan \texttt{class()} pada
+\texttt{output\_map}. Mengapa kita tidak perlu menggunakan
+\texttt{rbind} dan \texttt{Reduce}?
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{library}\NormalTok{(purrr) }\CommentTok{# aktifkan paket purrr}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Warning: package 'purrr' was built under R version 3.5.3
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{daftar_berkas}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "../data-raw/001_lelang-bandung_2013.csv"
+## [2] "../data-raw/002_lelang-bandung_2014.csv"
+## [3] "../data-raw/003_lelang-bandung_2015.csv"
+## [4] "../data-raw/004_lelang-bandung_2016.csv"
+## [5] "../data-raw/005_lelang-bandung_2017.csv"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{output_map <-}\StringTok{ }\KeywordTok{map_dfr}\NormalTok{(daftar_berkas, read_csv)}
+\NormalTok{output_map}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 3,280 x 32
+##    kode_lelang nama_lelang kode_rup tanggal_pembuat~ keterangan
+##          <dbl> <chr>          <dbl> <date>           <chr>     
+##  1        5260 J5-Peningk~       NA 2013-02-19       <NA>      
+##  2      171260 B2-Peningk~       NA 2013-02-21       <NA>      
+##  3      374260 J126-Penin~       NA 2013-04-24       <NA>      
+##  4      452260 J140-Penin~       NA 2013-05-19       <NA>      
+##  5      521260 Belanja Mo~       NA 2013-05-20       <NA>      
+##  6      571260 Pengadaan ~       NA 2013-06-11       <NA>      
+##  7      727260 Pembanguna~       NA 2013-08-07       <NA>      
+##  8      628260 SS-06 Bang~       NA 2013-06-25       <NA>      
+##  9      772260 Belanja Mo~       NA 2013-08-13       <NA>      
+## 10      889260 PKP1-Penga~       NA 2013-09-18       <NA>      
+## # ... with 3,270 more rows, and 27 more variables: tahapan_lelang <chr>,
+## #   instansi <chr>, satuan_kerja <chr>, kategori <chr>,
+## #   metode_pengadaan <chr>, metode_kualifikasi <chr>,
+## #   metode_dokumen <chr>, metode_evaluasi <chr>, tahun_anggaran <chr>,
+## #   tahun <dbl>, pagu <dbl>, hps <dbl>, cara_pembayaran <chr>,
+## #   pembebanan_ta <chr>, sumber_pendanaan <chr>, lokasi <chr>,
+## #   kualifikasi_usaha <chr>, peserta_lelang <dbl>, agency <chr>,
+## #   satker <chr>, nama_pemenang <chr>, alamat <chr>, npwp <chr>,
+## #   hasil_negosiasi <dbl>, harga_penawaran <dbl>, harga_terkoreksi <dbl>,
+## #   gagal_lelang <chr>
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{class}\NormalTok{(output_map)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "spec_tbl_df" "tbl_df"      "tbl"         "data.frame"
+\end{verbatim}
+
+
+\end{document}
