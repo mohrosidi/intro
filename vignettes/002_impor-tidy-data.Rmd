@@ -83,10 +83,13 @@ table4b # non tidy
 table5 # non tidy
 ```
 
-objek `table1` telah memenuhi syarat dari data yang tidy yaitu: 
+- objek `table1` telah memenuhi syarat dari data yang tidy yaitu: 
 
 1. setiap kolom mewakili satu variabel, 
 2. setiap baris mewakili satu observasi,
 3. setiap cel menunjukkan nilai dari setiap observasi pada variabel tertentu.
 
-Pada objek lainnya kondisi ini tidak terjadi seperti pada `table4a` dan `table4b`. Kedua objek tersebut memiliki 2 buah variabel berupa tahun yang seharusnya digabung menjadi satu variabel dengan nama `year`, sedangkan pada `table3` dan `table5` terdapat variabel rate yang masih mengandung bilangan numerik dengan tanda pemisah `/` yang dapat dijadikan satu nilai yaitu hasil bagi dua nilai tersebut. Selain itu pada `Table2` tidak tidy sebab pada variabel type seharusnya dipecah menjadi beberapa kolom yaitu kolom `cases` dan kolom `population`.
+- objek `table2` belum tidy sebab pada variabel `type` perlu dijadikan dua buah variabel lagi yaitu variabel `cases` dan variabel `population`.
+- objek `table3` belum tidy sebab pada nilai variabel `rate` disajikan dalam bentuk rasio. Agar `tidy` maka nilai variabel `rate` perlu diubah menjadi hasil baginya atau dibentuk menjadi 2 buah variabel baru dari variabel asalnya.
+- objek `table4a` dan `table4b` belum tidy sebab variabel `1999` dan `2000` dapat dijadikan satu variabel yaitu variabel `year`. Nilai variabelnya dapat dijadikan varaibel baru berupa `cases` atau `population`.
+- objek `table5` belum tidy. Agar tidy maka variabel `century` dan `year` perlu dijadikan satu variabel yaitu `year`. Variabel `rate` juga perlu diubah jadi dua variabel atau nilai yang ditampilkan dalam kolom berupa hasil bagi dari rasio dua nilai yang ada.

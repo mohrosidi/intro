@@ -173,7 +173,7 @@ skim(evals)
 ##  n obs: 463 
 ##  n variables: 21 
 ## 
-## -- Variable type:character ----------------------------------------------------------------------------------
+## -- Variable type:character ---------------------------------------------------------------------------------------------------------------------------------------------------------------
 ##     variable missing complete   n min max empty n_unique
 ##  cls_credits       0      463 463  10  12     0        2
 ##    cls_level       0      463 463   5   5     0        2
@@ -185,7 +185,7 @@ skim(evals)
 ##   pic_outfit       0      463 463   6  10     0        2
 ##         rank       0      463 463   7  12     0        3
 ## 
-## -- Variable type:numeric ------------------------------------------------------------------------------------
+## -- Variable type:numeric -----------------------------------------------------------------------------------------------------------------------------------------------------------------
 ##       variable missing complete   n  mean    sd    p0   p25   p50   p75
 ##            age       0      463 463 48.37  9.8  29    42    48    57   
 ##        bty_avg       0      463 463  4.42  1.53  1.67  3.17  4.33  5.5 
@@ -400,10 +400,13 @@ table5 # non tidy
 ## 6 China       20      00    213766/1280428583
 ```
 
-objek `table1` telah memenuhi syarat dari data yang tidy yaitu: 
+- objek `table1` telah memenuhi syarat dari data yang tidy yaitu: 
 
 1. setiap kolom mewakili satu variabel, 
 2. setiap baris mewakili satu observasi,
 3. setiap cel menunjukkan nilai dari setiap observasi pada variabel tertentu.
 
-Pada objek lainnya kondisi ini tidak terjadi seperti pada `table4a` dan `table4b`. Kedua objek tersebut memiliki 2 buah variabel berupa tahun yang seharusnya digabung menjadi satu variabel dengan nama `year`, sedangkan pada `table3` dan `table5` terdapat variabel rate yang masih mengandung bilangan numerik dengan tanda pemisah `/` yang dapat dijadikan satu nilai yaitu hasil bagi dua nilai tersebut. Selain itu pada `Table2` tidak tidy sebab pada variabel type seharusnya dipecah menjadi beberapa kolom yaitu kolom `cases` dan kolom `population`.
+- objek `table2` belum tidy sebab pada variabel `type` perlu dijadikan dua buah variabel lagi yaitu variabel `cases` dan variabel `population`.
+- objek `table3` belum tidy sebab pada nilai variabel `rate` disajikan dalam bentuk rasio. Agar `tidy` maka nilai variabel `rate` perlu diubah menjadi hasil baginya atau dibentuk menjadi 2 buah variabel baru dari variabel asalnya.
+- objek `table4a` dan `table4b` belum tidy sebab variabel `1999` dan `2000` dapat dijadikan satu variabel yaitu variabel `year`. Nilai variabelnya dapat dijadikan varaibel baru berupa `cases` atau `population`.
+- objek `table5` belum tidy. Agar tidy maka variabel `century` dan `year` perlu dijadikan satu variabel yaitu `year`. Variabel `rate` juga perlu diubah jadi dua variabel atau nilai yang ditampilkan dalam kolom berupa hasil bagi dari rasio dua nilai yang ada.
