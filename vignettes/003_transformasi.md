@@ -98,7 +98,7 @@ gather(table4a, key = "year", value = "case", 2:3)
 
 ```r
 table4a_tidy <- table4a %>% 
-  gather(key = "year", value = "cases", 2:3) # menggunakan tidyverse syntax, pipe %>%
+  gather(key = "year", value = "cases", 2:3, convert = TRUE) # menggunakan tidyverse syntax, pipe %>%
 ```
 
 Silakan lakukan hal serupa pada dataset 'table4b' namun dengan menggunakan "population" sebagai isian argumen `value`. Tuliskan juga dengan menggunakan *tidyverse syntax* dan simpan obyek tersebut dengan nama 'table4b_tidy'!
@@ -119,7 +119,7 @@ table4b
 
 ```r
 table4b_tidy <- table4b %>% 
-  gather(key = "year", value = "population", 2:3)
+  gather(key = "year", value = "population", 2:3, convert = TRUE)
 ```
 
 Dataset 'table4a_tidy' dan 'table4b_tidy' tersebut dapat digabungkan menjadi satu dataset. Hal tersebut dapat dilakukan dengan menggunakan fungsi `left_join` dari paket `dplyr` seperti contoh berikut:

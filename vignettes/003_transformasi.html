@@ -1626,7 +1626,7 @@ div.tocify {
 ## 5 Brazil      2000   80488
 ## 6 China       2000  213766</code></pre>
 <pre class="r"><code>table4a_tidy &lt;- table4a %&gt;% 
-  gather(key = &quot;year&quot;, value = &quot;cases&quot;, 2:3) # menggunakan tidyverse syntax, pipe %&gt;%</code></pre>
+  gather(key = &quot;year&quot;, value = &quot;cases&quot;, 2:3, convert = TRUE) # menggunakan tidyverse syntax, pipe %&gt;%</code></pre>
 <p>Silakan lakukan hal serupa pada dataset ‘table4b’ namun dengan menggunakan “population” sebagai isian argumen <code>value</code>. Tuliskan juga dengan menggunakan <em>tidyverse syntax</em> dan simpan obyek tersebut dengan nama ‘table4b_tidy’!</p>
 <pre class="r"><code>table4b</code></pre>
 <pre><code>## # A tibble: 3 x 3
@@ -1636,7 +1636,7 @@ div.tocify {
 ## 2 Brazil       172006362  174504898
 ## 3 China       1272915272 1280428583</code></pre>
 <pre class="r"><code>table4b_tidy &lt;- table4b %&gt;% 
-  gather(key = &quot;year&quot;, value = &quot;population&quot;, 2:3)</code></pre>
+  gather(key = &quot;year&quot;, value = &quot;population&quot;, 2:3, convert = TRUE)</code></pre>
 <p>Dataset ‘table4a_tidy’ dan ‘table4b_tidy’ tersebut dapat digabungkan menjadi satu dataset. Hal tersebut dapat dilakukan dengan menggunakan fungsi <code>left_join</code> dari paket <code>dplyr</code> seperti contoh berikut:</p>
 <pre class="r"><code>library(dplyr) # mengaktifkan paket dplyr</code></pre>
 <pre><code>## Warning: package &#39;dplyr&#39; was built under R version 3.5.3</code></pre>
